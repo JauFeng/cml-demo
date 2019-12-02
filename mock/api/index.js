@@ -24,6 +24,20 @@ module.exports = [
         });
       },1000)
     },
+  },
+  {
+    method: 'post',
+    path: '/api/vote',
+    controller:  function (req, res, next) {
+      console.log('/api/vote');
+      console.log(req);
+      setTimeout(()=>{
+        res.json({
+          retCode: 0,
+          retMsg: '投票成功'
+        });
+      },1000)
+    },
   }
 ]
 

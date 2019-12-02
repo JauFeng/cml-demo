@@ -12,7 +12,8 @@
 
     <view class="footer-zhanwei">
       <c-tabbar c-model="{{currentCom}}"
-                tabbar="{{tabbar}}"></c-tabbar>
+                tabbar="{{tabbar}}">
+      </c-tabbar>
     </view>
   </page>
 </template>
@@ -42,13 +43,13 @@
             "iconStyle":"width:40cpx;height:40cpx;",
             "selectedIconStyle":"width:45cpx;height:45cpx;"
           },
-          {
-            compName: 'classify',
-            text: '分类',
-            icon: chameleonIcon,
-            "iconStyle":"width:40cpx;height:40cpx;",
-            "selectedIconStyle":"width:45cpx;height:45cpx;"
-          },
+          // {
+          //   compName: 'classify',
+          //   text: '分类',
+          //   icon: chameleonIcon,
+          //   "iconStyle":"width:40cpx;height:40cpx;",
+          //   "selectedIconStyle":"width:45cpx;height:45cpx;"
+          // },
           {
             compName: 'topic',
             text: '排名',
@@ -56,13 +57,13 @@
             "iconStyle":"width:40cpx;height:40cpx;",
             "selectedIconStyle":"width:45cpx;height:45cpx;"
           },
-          {
-            compName: 'shop',
-            text: '购物车',
-            icon: chameleonIcon,
-            "iconStyle":"width:40cpx;height:40cpx;",
-            "selectedIconStyle":"width:45cpx;height:45cpx;"
-          },
+          // {
+          //   compName: 'shop',
+          //   text: '购物车',
+          //   icon: chameleonIcon,
+          //   "iconStyle":"width:40cpx;height:40cpx;",
+          //   "selectedIconStyle":"width:45cpx;height:45cpx;"
+          // },
           {
             compName: 'my',
             text: '个人',
@@ -146,7 +147,7 @@
         "classify": "../../components/classify/classify",
         "shop": "../../components/shop/shop",
         "my": "../../components/my/my",
-        "topic": "../../components/topic/topic",
+        "topic": "../list/rank",
         "c-tabbar": "cml-tt-ui/components/c-tabbar/c-tabbar"
       },
       "navigationBarTitleText": "首页",

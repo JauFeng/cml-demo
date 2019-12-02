@@ -67,5 +67,11 @@ export default new Classlist();
   }
 </style>
 <script cml-type="json">
- { }
+  {
+    "base": {
+    "usingComponents": {
+
+    }
+  }
+  }
 </script>

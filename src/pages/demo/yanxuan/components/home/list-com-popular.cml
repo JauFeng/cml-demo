@@ -137,7 +137,6 @@
   export default new Refresh();
 </script>
 <template>
-  <page title="列表">
     <view class="container">
       <scroller
         scroll-direction="{{scrollDirection}}"
@@ -147,10 +146,6 @@
         height="{{-1}}"
       >
         <view>
-          <view class="bannerImg">
-            <image src="{{topImg}}" class="topImg"/>
-          </view>
-
           <c-toast  show="{{voteToastShow}}"
                     c-bind:show="toastChangeShow"
                     message="{{voteToastMessage}}"
@@ -184,10 +179,10 @@
 
           <view class="scroll-content">
             <view class="scroll-content-title">
-              <text class="scroll-content-title-con">最新</text>
+              <text class="scroll-content-title-con">最热</text>
             </view>
             <view class="scroll-content-des">
-              <text class="scroll-content-des-con">帅哥美女上新</text>
+              <text class="scroll-content-des-con">最火帅哥美女</text>
             </view>
 
             <view class="scroll-content-list">
@@ -197,7 +192,7 @@
                 c-for="{{list}}"
                 c-for-index="i"
                 c-for-item="item"
-                c-bind:tap="showConfirm"
+                c-bind:tap="post"
                 data-idx="{{i}}"
               >
                 <view class="scroll-content-list-item-content">
@@ -223,7 +218,6 @@
           </view>
       </scroller>
     </view>
-  </page>
 </template>
 <style scoped>
   .container {

@@ -137,7 +137,7 @@
   export default new Refresh();
 </script>
 <template>
-  <page title="列表">
+  <page title="Rank">
     <view class="container">
       <scroller
         scroll-direction="{{scrollDirection}}"
@@ -183,12 +183,6 @@
           <button class="btn" c-bind:onclick="post" text="post"></button>
 
           <view class="scroll-content">
-            <view class="scroll-content-title">
-              <text class="scroll-content-title-con">最新</text>
-            </view>
-            <view class="scroll-content-des">
-              <text class="scroll-content-des-con">帅哥美女上新</text>
-            </view>
 
             <view class="scroll-content-list">
 

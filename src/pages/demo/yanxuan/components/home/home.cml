@@ -2,13 +2,54 @@
   <view class="home">
     <cswiper></cswiper>
     <service></service>
-    <classlist></classlist>
-    <special></special>
+<!--    <classlist></classlist>-->
+<!--    <special></special>-->
+
+    <c-tab
+        tabs="{{tabs}}"
+        c-bind:tabclick="handleTabTap"
+        active-label="{{activeLabel}}"
+        inline="{{false}}"
+    >
+    </c-tab>
+    <c-tab-pane tabs="{{tabs}}" active-label="{{activeLabel}}">
+      <c-tab-pane-item>
+        <view class="one">
+          <list-com-latest></list-com-latest>
+        </view>
+      </c-tab-pane-item>
+      <c-tab-pane-item>
+        <view class="two">
+          <list-com-popular></list-com-popular>
+        </view>
+      </c-tab-pane-item>
+    </c-tab-pane>
+
+
   </view>
 </template>
 
 <script>
   class Home {
+    data = {
+      tabs:[{
+        label:'最新',
+        // prefixStyle:"width:50cpx;height:20cpx;background-color:red"
+      },{
+        label:"最热",
+        // suffixStyle:"width:50cpx;height:20cpx;background-color:red"
+      }],
+      activeLabel:'最新',
+    }
+    methods = {
+      handleTabTap(e){
+        console.log(e);
+        this.activeLabel = e.detail.label;
+      },
+      handleTabTapAlone(e){
+        this.activeLabelAlone = e.detail.label;
+      }
+    }
   }
   export default new Home();
 </script>
@@ -17,10 +58,15 @@
   {
     "base": {
       "usingComponents": {
+        "c-tab": "cml-ui/components/c-tab/c-tab",
+        "c-tab-pane": "cml-ui/components/c-tab-pane/c-tab-pane",
+        "c-tab-pane-item": "cml-ui/components/c-tab-pane-item/c-tab-pane-item",
         "cswiper": "./cswiper",
         "service": "./service",
         "classlist": "./classlist",
-        "special": "./special"
+        "special": "./special",
+        "list-com-latest": "./list-com-latest",
+        "list-com-popular": "./list-com-popular"
       }
     }
   }

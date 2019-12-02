@@ -15,15 +15,15 @@
         c-bind:confirm="confirmEvent"
         c-bind:cancel="cancelEvent"
       ></c-dialog>
-    <!-- <c-dialog show="{{custom}}" mask="{{true}}">
+     <c-dialog show="{{custom}}" mask="{{true}}">
       <text class="custom-header" slot="header">自定义标题</text>
       <text class="custom-content">自定义内容</text>
       <text class="custom-footer" slot="footer">自定义底部</text>
-    </c-dialog> -->
+    </c-dialog>
     <button class="btn" c-bind:onclick="showAlert" text="alert dialog"></button>
     <button class="btn" c-bind:onclick="showConfirm" text="confirm dialog"></button>
     <button class="btn" c-bind:onclick="showCloseIcon" text="show close dialog"></button>
-    <!-- <c-button class="btn" c-bind:onclick="showCustom" text="show custom dialog"></c-button> -->
+    <c-button class="btn" c-bind:onclick="showCustom" text="show custom dialog"></c-button>
   </view>
 </page>
 </template>

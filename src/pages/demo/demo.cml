@@ -5,7 +5,7 @@
         <view class="title-row">
           <row justify="start">
             <image class="title-icon" src="{{iconApiUri}}"></image>
-            <text ref="titleText" class="title-text">实例</text>
+            <text ref="titleText" class="title-text">实例1</text>
           </row>
         </view>
         <view class="page-list">
