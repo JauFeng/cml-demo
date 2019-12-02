@@ -1,0 +1,8 @@
+<view class="secondary-cell  cml-base cml-view cml-13139ba8">
+  <text class="cell-title  cml-base cml-text cml-13139ba8">{{title}}</text>
+  <view class="cell-divider  cml-base cml-view cml-13139ba8"></view>
+  <view class="btn-group  cml-base cml-view cml-13139ba8" a:for="{{list}}" a:for-item="cellInfo">
+    <text class="btn-tip  cml-base cml-text cml-13139ba8">{{cellInfo.title}}</text>
+    <view class="action-btn  cml-base cml-view cml-13139ba8" data-index="{{index}}"><cml-buildin-button class="action-btn  cml-base cml-button cml-13139ba8" size="none" type="blue" text="{{cellInfo.btnText}}" btn-style="height:100cpx;width:658cpx;margin: 24cpx 0 30cpx;" data-index="{{index}}" onOnclick="_cmlInline" data-eventonclick="{{['onBtnClick',index]}}"></cml-buildin-button></view>
+  </view>
+</view>

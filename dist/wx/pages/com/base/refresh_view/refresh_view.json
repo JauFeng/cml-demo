@@ -1,0 +1,11 @@
+{
+    "usingComponents": {
+        "c-header": "./../../../../components/header/header",
+        "cml-buildin-page": "./../../../../npm/chameleon-ui-builtin/components/page/page"
+    },
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#E2E2E2",
+    "navigationBarTitleText": "index",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 50
+}

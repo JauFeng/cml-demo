@@ -1,0 +1,16 @@
+<view class="wrapper  cml-base cml-view cml-1138b27d">
+  <view class="cont  cml-base cml-view cml-1138b27d">
+    <view class="i-tp  cml-base cml-view cml-1138b27d" a:for="{{topics}}">
+      <image class="tp-img  cml-base cml-image cml-1138b27d" resize="cover" src="{{item.img}}"></image>
+      <text class="tp-name  cml-base cml-text cml-1138b27d">{{item.name}}</text>
+    </view>
+  </view>
+  <view class="tp-box  cml-base cml-view cml-1138b27d"><cml-buildin-scroller class="tp-box  cml-base cml-scroller cml-1138b27d" scroll-direction="{{'horizontal'}}" width="{{-1}}">
+    <view class="cont  cml-base cml-view cml-1138b27d">
+      <view class="i-tp  cml-base cml-view cml-1138b27d" a:for="{{topics}}">
+        <image class="tp-img  cml-base cml-image cml-1138b27d" resize="cover" src="{{item.img}}"></image>
+        <text class="tp-name  cml-base cml-text cml-1138b27d">{{item.name}}</text>
+      </view>
+    </view>
+  </cml-buildin-scroller></view>
+</view>

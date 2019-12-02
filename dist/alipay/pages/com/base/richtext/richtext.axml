@@ -1,0 +1,6 @@
+<view class=" cml-base cml-view cml-2277c93c"><cml-buildin-page title="richtext" class=" cml-base cml-page cml-2277c93c">
+  <view class="container  cml-base cml-view cml-2277c93c">
+    <view class=" cml-base cml-view cml-2277c93c"><c-header title="richtext" class=" cml-base cml-c-header cml-2277c93c"></c-header></view>
+    <view style="width:200rpx;height:100rpx" class=" cml-base cml-view cml-2277c93c"><cml-buildin-richtext rich-data="{{richData}}" style="width:200rpx;height:100rpx" class=" cml-base cml-richtext cml-2277c93c"></cml-buildin-richtext></view>
+  </view>
+  </cml-buildin-page></view>

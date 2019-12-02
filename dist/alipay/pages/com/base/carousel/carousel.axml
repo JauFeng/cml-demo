@@ -1,0 +1,14 @@
+<view class=" cml-base cml-view cml-8542857c"><cml-buildin-page title="carousel" class=" cml-base cml-page cml-8542857c">
+  <view class=" cml-base cml-view cml-8542857c"><c-header title="carousel" class=" cml-base cml-c-header cml-8542857c"></c-header></view>
+  <view class="container  cml-base cml-view cml-8542857c"><swiper class="container  cml-base cml-carousel cml-8542857c" indicator-dots="{{true}}" current="{{0}}" circular="{{true}}">
+    <swiper-item class=" cml-base cml-carousel-item cml-8542857c">
+      <view class="carousel-item  cml-base cml-view cml-8542857c" style="background-color:#EBDEAA"></view>
+    </swiper-item>
+    <swiper-item class=" cml-base cml-carousel-item cml-8542857c">
+      <view class="carousel-item  cml-base cml-view cml-8542857c" style="background-color:#E3EDCD"></view>
+    </swiper-item>
+    <swiper-item class=" cml-base cml-carousel-item cml-8542857c">
+      <view class="carousel-item  cml-base cml-view cml-8542857c" style="background-color:#EAEAEF"></view>
+    </swiper-item>
+  </swiper></view>
+  </cml-buildin-page></view>

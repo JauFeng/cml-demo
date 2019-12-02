@@ -1,0 +1,30 @@
+<view class=" cml-base cml-view cml-7955a63e"><cml-buildin-page title="row演示" class=" cml-base cml-page cml-7955a63e">
+    <view class=" cml-base cml-view cml-7955a63e"><c-header title="row" class=" cml-base cml-c-header cml-7955a63e"></c-header></view>
+    <view class=" cml-base cml-view cml-7955a63e"><cml-buildin-row margin="{{100}}" class=" cml-base cml-row cml-7955a63e">
+      <view class="col-item  cml-base cml-view cml-7955a63e"></view>
+      <view class="col-item  cml-base cml-view cml-7955a63e"></view>
+      <view class="col-item  cml-base cml-view cml-7955a63e"></view>
+    </cml-buildin-row></view>
+    <view class=" cml-base cml-view cml-7955a63e"><cml-buildin-row margin="{{100}}" height="{{200}}" class=" cml-base cml-row cml-7955a63e">
+      <view class=" cml-base cml-view cml-7955a63e"><cml-buildin-col width="{{50}}" height="{{100}}" background-color="#ddd" margin="{{20}}" class=" cml-base cml-col cml-7955a63e">
+        <view class=" cml-base cml-view cml-7955a63e"></view>
+      </cml-buildin-col></view>
+      <view class=" cml-base cml-view cml-7955a63e"><cml-buildin-col width="{{100}}" height="{{100}}" background-color="#bbb" margin="{{20}}" class=" cml-base cml-col cml-7955a63e">
+        <view class=" cml-base cml-view cml-7955a63e"></view>
+      </cml-buildin-col></view>
+      <view class=" cml-base cml-view cml-7955a63e"><cml-buildin-col width="{{200}}" height="{{100}}" background-color="#aaa" margin="{{20}}" class=" cml-base cml-col cml-7955a63e">
+        <view class=" cml-base cml-view cml-7955a63e"></view>
+      </cml-buildin-col></view>
+    </cml-buildin-row></view>
+    <view class=" cml-base cml-view cml-7955a63e"><cml-buildin-row margin="{{100}}" height="{{100}}" class=" cml-base cml-row cml-7955a63e">
+      <view class=" cml-base cml-view cml-7955a63e"><cml-buildin-col margin="{{50}}" class=" cml-base cml-col cml-7955a63e">
+        <view class="col-item-2  cml-base cml-view cml-7955a63e"></view>
+      </cml-buildin-col></view>
+      <view class=" cml-base cml-view cml-7955a63e"><cml-buildin-col margin="{{50}}" class=" cml-base cml-col cml-7955a63e">
+        <view class="col-item-2  cml-base cml-view cml-7955a63e"></view>
+      </cml-buildin-col></view>
+      <view class=" cml-base cml-view cml-7955a63e"><cml-buildin-col margin="{{50}}" class=" cml-base cml-col cml-7955a63e">
+        <view class="col-item-2  cml-base cml-view cml-7955a63e"></view>
+      </cml-buildin-col></view>
+    </cml-buildin-row></view>
+  </cml-buildin-page></view>

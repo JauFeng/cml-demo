@@ -1,0 +1,3 @@
+<view class="{{full ? 'page-full' : 'page'}}  cml-base cml-view cml-6d664ac5">
+  <slot class=" cml-base cml-slot cml-6d664ac5"></slot>
+</view>

@@ -1,0 +1,12 @@
+<view class=" cml-base cml-view cml-d260d53c"><cml-buildin-page title="text" class=" cml-base cml-page cml-d260d53c">
+  <view class="page-demo  cml-base cml-view cml-d260d53c" style="height:{{pageHeight}}rpx">
+    <view class=" cml-base cml-view cml-d260d53c"><c-header title="text" class=" cml-base cml-c-header cml-d260d53c"></c-header></view>
+      <view class="text-area  cml-base cml-view cml-d260d53c">
+        <view a:for="{{addLine}}" a:key="{{item}}" class=" cml-base cml-view cml-d260d53c">
+          <text class="line-text  cml-base cml-text cml-d260d53c">{{item}}</text>
+        </view>
+      </view>
+      <view class="btn  cml-base cml-view cml-d260d53c" onTap="_cmlEventProxy" data-eventtap="{{['add']}}"><text class="{{addTextClass}}  cml-base cml-text cml-d260d53c">add line</text></view>
+      <view class="btn  cml-base cml-view cml-d260d53c" onTap="_cmlEventProxy" data-eventtap="{{['remove']}}"><text class="{{removeTextClass}}  cml-base cml-text cml-d260d53c">remove line</text></view>
+  </view>
+  </cml-buildin-page></view>

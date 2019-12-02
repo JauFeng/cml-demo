@@ -1,0 +1,11 @@
+<view class="tip  cml-base cml-view cml-479055d1" a:if="{{show}}" style="{{tipStyle}}">
+  <view class=" cml-base cml-view cml-479055d1"><c-tip-angle direction="{{direction}}" angle-style="{{angleStyle}}" angle-img="{{angleImg}}" class=" cml-base cml-c-tip-angle cml-479055d1"></c-tip-angle></view>
+  <view class="tip-wrap  cml-base cml-view cml-479055d1">
+    <view class="tip-close  cml-base cml-view cml-479055d1" onTap="_cmlEventProxy" data-eventtap="{{['closeTap']}}">
+        <image src="{{closeUrl}}" style="width:24rpx;height:24rpx" class=" cml-base cml-image cml-479055d1" />
+    </view>
+    <view class="tip-content  cml-base cml-view cml-479055d1">
+      <slot class=" cml-base cml-slot cml-479055d1"></slot>
+    </view>
+  </view>
+</view>

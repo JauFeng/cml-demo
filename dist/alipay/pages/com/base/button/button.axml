@@ -1,0 +1,44 @@
+<view class=" cml-base cml-view cml-b7d995fc"><cml-buildin-page title="button" class=" cml-base cml-page cml-b7d995fc">
+    <view class=" cml-base cml-view cml-b7d995fc"><cml-buildin-scroller height="{{-1}}" class=" cml-base cml-scroller cml-b7d995fc">
+      <view class=" cml-base cml-view cml-b7d995fc"><c-header title="button" class=" cml-base cml-c-header cml-b7d995fc"></c-header></view>
+      <view class="section-title  cml-base cml-view cml-b7d995fc">
+        <text class="section-title-text  cml-base cml-text cml-b7d995fc">类型样式</text>
+      </view>
+      <view class="button-list  cml-base cml-view cml-b7d995fc">
+        <text class="button-text  cml-base cml-text cml-b7d995fc">default/blue</text>
+        <view class=" cml-base cml-view cml-b7d995fc"><cml-buildin-button text="确定" onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}" class=" cml-base cml-button cml-b7d995fc"></cml-buildin-button></view>
+
+        <text class="button-text  cml-base cml-text cml-b7d995fc">disabled</text>
+        <view class=" cml-base cml-view cml-b7d995fc"><cml-buildin-button type="blue" text="确定" disabled="{{true}}" onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}" class=" cml-base cml-button cml-b7d995fc">
+        </cml-buildin-button></view>
+
+        <text class="button-text  cml-base cml-text cml-b7d995fc">orange</text>
+        <view class=" cml-base cml-view cml-b7d995fc"><cml-buildin-button type="orange" text="确定" onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}" class=" cml-base cml-button cml-b7d995fc">
+        </cml-buildin-button></view>
+
+        <text class="button-text  cml-base cml-text cml-b7d995fc">red && disabled</text>
+        <view class=" cml-base cml-view cml-b7d995fc"><cml-buildin-button type="red" text="确定" disabled="{{true}}" onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}" class=" cml-base cml-button cml-b7d995fc">
+        </cml-buildin-button></view>
+
+        <text class="button-text  cml-base cml-text cml-b7d995fc">green</text>
+        <view class=" cml-base cml-view cml-b7d995fc"><cml-buildin-button type="green" text="确定" onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}" class=" cml-base cml-button cml-b7d995fc">
+        </cml-buildin-button></view>
+      </view>
+
+      <view class="section-title  cml-base cml-view cml-b7d995fc">
+        <text class="section-title-text  cml-base cml-text cml-b7d995fc">尺寸</text>
+      </view>
+      <view class="button-list  cml-base cml-view cml-b7d995fc">
+        <text class="button-text  cml-base cml-text cml-b7d995fc">big</text>
+        <view class=" cml-base cml-view cml-b7d995fc"><cml-buildin-button text="确定" onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}" class=" cml-base cml-button cml-b7d995fc"></cml-buildin-button></view>
+
+        <text class="button-text  cml-base cml-text cml-b7d995fc">medium</text>
+        <view class=" cml-base cml-view cml-b7d995fc"><cml-buildin-button type="orange" text="确定" size="medium" onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}" class=" cml-base cml-button cml-b7d995fc">
+        </cml-buildin-button></view>
+
+        <text class="button-text  cml-base cml-text cml-b7d995fc">small</text>
+        <view class=" cml-base cml-view cml-b7d995fc"><cml-buildin-button type="red" text="确定" size="small" disabled="{{true}}" onOnclick="_cmlEventProxy" data-eventonclick="{{['testclick']}}" class=" cml-base cml-button cml-b7d995fc">
+        </cml-buildin-button></view>
+      </view>
+    </cml-buildin-scroller></view>
+  </cml-buildin-page></view>

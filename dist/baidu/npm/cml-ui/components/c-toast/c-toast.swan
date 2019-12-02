@@ -1,0 +1,6 @@
+<c-popup show="{{show}}" mask="{{mask}}" class=" cml-view cml-c-popup">
+  <view class="toast-content  cml-base cml-view" style="{{computedToastStyle}}">
+    <image s-if="needIcon" src="{{typeImg}}" class="toast-icon  cml-base cml-image" style="{{computedIconStyle}}" />
+    <text class="toast-text  cml-base cml-text" style="{{computedTextStyle}}">{{message}}</text>
+  </view>
+</c-popup>

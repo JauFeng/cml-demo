@@ -1,0 +1,1 @@
+<view class="tip-angle {{'tip-angle-' + direction}}  cml-base cml-view cml-a246422e" style="{{angleStyle}}"></view>

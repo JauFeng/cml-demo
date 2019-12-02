@@ -1,0 +1,4 @@
+<view height="{{0}}" class="secondary-header  cml-base cml-view cml-0d8d127e">
+  <text class="header-title  cml-base cml-text cml-0d8d127e">{{title}}</text>
+  <text class="header-subtitle  cml-base cml-text cml-0d8d127e">{{subtitle}}</text>    
+</view>
