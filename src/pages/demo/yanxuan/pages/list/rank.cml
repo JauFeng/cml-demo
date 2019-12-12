@@ -47,10 +47,29 @@
 
       },
       _getData() {
-        const {topImgUrl, list} = listData.data;
-        this.list = [...this.list, ...list];
-        this.topImg = topImgUrl;
-        this.page = this.page + 1;
+        cml.get({
+          url: "http://10.164.31.68:9000/demo/api?order=" + 1,
+          // data: {
+          //   user: 1,
+          //   voter: 1234567890
+          // }
+          setting: {credentials: 'omit'}
+        }).then(res => {
+          // cml.showToast({
+          //   message: res.retMsg,
+          //   duration: 2000
+          // });
+          const {topImgUrl, list} = res.data;
+          this.list = [...this.list, ...list];
+          this.topImg = topImgUrl;
+          this.page = this.page + 1;
+
+        }, err => {
+          cml.showToast({
+            message: JSON.stringify(err),
+            duration: 2000
+          })
+        });
       },
       toastChangeShow(e) {
         this.voteToastShow = e.detail.value;
@@ -86,8 +105,9 @@
       cancelEvent() {
         console.log('cancel');
       },
-      post() {
-        vote();
+      post(e) {
+        const id = e.currentTarget.id;
+        vote(id);
       }
     }
 
@@ -107,22 +127,23 @@
     });
   }
 
-  function vote() {
+  function vote(id) {
     cml.post({
-      url: "http://10.164.31.68:5556/api/vote",
+      url: "http://10.164.31.68:9000/demo/api/vote",
       data: {
-        user: 1,
+        id: id,
         voter: 1234567890
-      }
+      },
+      setting: {credentials: 'omit'}
     }).then(res => {
-      if (0 === res.retCode) {
+      if (0 === res.code) {
         cml.showToast({
-          message: res.retMsg,
+          message: '投票成功',
           duration: 2000
         })
       } else {
         cml.showToast({
-          message: res.retMsg,
+          message: '投票失败',
           duration: 2000
         })
       }
@@ -142,7 +163,7 @@
       <scroller
         scroll-direction="{{scrollDirection}}"
         bottom-offset="{{bottomOffset}}"
-        c-bind:scrolltobottom="onBottom"
+<!--        c-bind:scrolltobottom="onBottom"-->
         c-bind:customscroll="onScroll"
         height="{{-1}}"
       >
@@ -151,36 +172,36 @@
             <image src="{{topImg}}" class="topImg"/>
           </view>
 
-          <c-toast  show="{{voteToastShow}}"
-                    c-bind:show="toastChangeShow"
-                    message="{{voteToastMessage}}"
-                    mask="{{voteToastMask}}"
-                    type="{{voteToastType}}"
-                    duration="{{1000}}"
-          ></c-toast>
+<!--          <c-toast  show="{{voteToastShow}}"-->
+<!--                    c-bind:show="toastChangeShow"-->
+<!--                    message="{{voteToastMessage}}"-->
+<!--                    mask="{{voteToastMask}}"-->
+<!--                    type="{{voteToastType}}"-->
+<!--                    duration="{{1000}}"-->
+<!--          ></c-toast>-->
 
-          <button class="btn" c-bind:onclick="showSuccess" text="success toast"></button>
+<!--          <button class="btn" c-bind:onclick="showSuccess" text="success toast"></button>-->
 
-          <button class="btn" c-bind:onclick="showWarn" text="warn toast"></button>
-
-
-          <c-dialog show="{{showDialog}}"
-                    c-bind:show="changeShowDialog"
-                    type="{{typeDialog}}"
-                    mask="{{true}}"
-                    title="{{titleDialog}}"
-                    content="{{contentDialog}}"
-                    icon-type="{{iconTypeDialog}}"
-                    icon-style="{{iconStyleDialog}}"
-                    show-close="{{showCloseDialog}}"
-                    c-bind:confirm="confirmEvent"
-                    c-bind:cancel="cancelEvent"
-          ></c-dialog>
-
-          <button class="btn" c-bind:onclick="showConfirm" text="confirm dialog"></button>
+<!--          <button class="btn" c-bind:onclick="showWarn" text="warn toast"></button>-->
 
 
-          <button class="btn" c-bind:onclick="post" text="post"></button>
+<!--          <c-dialog show="{{showDialog}}"-->
+<!--                    c-bind:show="changeShowDialog"-->
+<!--                    type="{{typeDialog}}"-->
+<!--                    mask="{{true}}"-->
+<!--                    title="{{titleDialog}}"-->
+<!--                    content="{{contentDialog}}"-->
+<!--                    icon-type="{{iconTypeDialog}}"-->
+<!--                    icon-style="{{iconStyleDialog}}"-->
+<!--                    show-close="{{showCloseDialog}}"-->
+<!--                    c-bind:confirm="confirmEvent"-->
+<!--                    c-bind:cancel="cancelEvent"-->
+<!--          ></c-dialog>-->
+
+<!--          <button class="btn" c-bind:onclick="showConfirm" text="confirm dialog"></button>-->
+
+
+<!--          <button class="btn" c-bind:onclick="post" text="post"></button>-->
 
           <view class="scroll-content">
 
@@ -191,18 +212,17 @@
                 c-for="{{list}}"
                 c-for-index="i"
                 c-for-item="item"
-                c-bind:tap="showConfirm"
                 data-idx="{{i}}"
               >
                 <view class="scroll-content-list-item-content">
                   <image src="{{item.imgUrl}}" class="scroll-content-list-item-content-img"/>
-                  <view class="scroll-content-list-item-content-des">
-                    <text class="des">{{item.des}}</text>
-                  </view>
                 </view>
-                <text class="scroll-content-list-item-name">{{item.name}}</text>
-                <text class="scroll-content-list-item-money">{{item.money}}票</text>
-                <text class="scroll-content-list-item-tag">投   票</text>
+                <view>
+                  <text class="scroll-content-list-item-name">{{item.name}}</text>
+                  <text class="scroll-content-list-item-money">{{item.money}}票</text>
+                </view>
+
+                <view id="{{item.id}}" c-bind:tap="post"><text class="scroll-content-list-item-tag"> 投   票</text></view>
               </view>
 
             </view>
@@ -213,7 +233,7 @@
           <text>没有更多了</text>
         </view>
           <view c-else class="loading-text" style="{{ loadingTextStyle }}">
-            <text>加载中...</text>
+            <text>到底了...</text>
           </view>
       </scroller>
     </view>

@@ -4,7 +4,7 @@
   "routes":[
     {
       "url": "/",
-      "path": "/pages/index/index",
+      "path": "/pages/demo/yanxuan/pages/index/index",
       "name": "首页",
       "mock": "index.php"
     },

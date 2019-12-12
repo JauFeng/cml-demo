@@ -73,7 +73,7 @@ cml.config.merge({
   web: {
     dev: {
       hot: true,
-      console: true,
+      console: false,
       analysis: false,
       isWrapComponent: false
     },

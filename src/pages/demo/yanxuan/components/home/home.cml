@@ -1,7 +1,8 @@
 <template>
+  <page title="Home">
   <view class="home">
     <cswiper></cswiper>
-    <service></service>
+<!--    <service></service>-->
 <!--    <classlist></classlist>-->
 <!--    <special></special>-->
 
@@ -27,6 +28,7 @@
 
 
   </view>
+  </page>
 </template>
 
 <script>
@@ -39,7 +41,7 @@
         label:"最热",
         // suffixStyle:"width:50cpx;height:20cpx;background-color:red"
       }],
-      activeLabel:'最新',
+      activeLabel:'最热',
     }
     methods = {
       handleTabTap(e){
