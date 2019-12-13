@@ -3,6 +3,8 @@
   // import cml from 'cml-tt-api'
   import listData from '../../assets/listImages.json';
 
+  const API_URL = 'http://47.96.82.143:9000';
+
   class Refresh {
     data = {
       topRefreshing: false,
@@ -48,7 +50,7 @@
       },
       _getData() {
         cml.get({
-          url: "http://10.164.31.68:9000/demo/api?order=" + 1,
+          url: API_URL+ '/demo/api?order=' + 1,
           // data: {
           //   user: 1,
           //   voter: 1234567890
@@ -129,11 +131,12 @@
 
   function vote(id) {
     cml.post({
-      url: "http://10.164.31.68:9000/demo/api/vote",
+      url: API_URL+ '/demo/api/vote',
       data: {
         id: id,
         voter: 1234567890
       },
+      contentType: 'json',
       setting: {credentials: 'omit'}
     }).then(res => {
       if (0 === res.code) {
