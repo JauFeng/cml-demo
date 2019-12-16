@@ -28,8 +28,8 @@
       typeDialog: "alert",
       iconTypeDialog: "warn",
       iconStyleDialog: {
-        width: "60cpx",
-        height: "60cpx"
+        width: "10cpx",
+        height: "10cpx"
       },
       titleDialog: "我是标题",
       contentDialog: "我是内容"
@@ -107,7 +107,7 @@
       cancelEvent() {
         console.log('cancel');
       },
-        post(e) {
+      post(e) {
             const id = e.currentTarget.id;
             vote(id);
         }
@@ -139,7 +139,6 @@
           contentType: 'json',
           setting: {credentials: 'omit'}
       }).then(res => {
-          this.reload();
           if (0 === res.code) {
               cml.showToast({
                   message: '投票成功',
@@ -162,84 +161,68 @@
   export default new Refresh();
 </script>
 <template>
+
     <view class="container">
+
       <scroller
         scroll-direction="{{scrollDirection}}"
         bottom-offset="{{bottomOffset}}"
-<!--        c-bind:scrolltobottom="onBottom"-->
         c-bind:customscroll="onScroll"
-        height="{{-1}}"
-      >
-        <view>
-<!--          <c-toast  show="{{voteToastShow}}"-->
-<!--                    c-bind:show="toastChangeShow"-->
-<!--                    message="{{voteToastMessage}}"-->
-<!--                    mask="{{voteToastMask}}"-->
-<!--                    type="{{voteToastType}}"-->
-<!--                    duration="{{1000}}"-->
-<!--          ></c-toast>-->
-
-<!--          <button class="btn" c-bind:onclick="showSuccess" text="success toast"></button>-->
-
-<!--          <button class="btn" c-bind:onclick="showWarn" text="warn toast"></button>-->
-
-
-<!--          <c-dialog show="{{showDialog}}"-->
-<!--                    c-bind:show="changeShowDialog"-->
-<!--                    type="{{typeDialog}}"-->
-<!--                    mask="{{true}}"-->
-<!--                    title="{{titleDialog}}"-->
-<!--                    content="{{contentDialog}}"-->
-<!--                    icon-type="{{iconTypeDialog}}"-->
-<!--                    icon-style="{{iconStyleDialog}}"-->
-<!--                    show-close="{{showCloseDialog}}"-->
-<!--                    c-bind:confirm="confirmEvent"-->
-<!--                    c-bind:cancel="cancelEvent"-->
-<!--          ></c-dialog>-->
-
-<!--          <button class="btn" c-bind:onclick="showConfirm" text="confirm dialog"></button>-->
-
-
-<!--          <button class="btn" c-bind:onclick="post" text="post"></button>-->
-
-          <view class="scroll-content">
-            <view class="scroll-content-title">
-              <text class="scroll-content-title-con">最热</text>
-            </view>
-            <view class="scroll-content-des">
-              <text class="scroll-content-des-con">最火帅哥美女</text>
+        height="{{-1}}">
+          <!--
+        <view class="dialog-page">
+          <c-dialog show="{{showDialog}}"
+                    c-bind:show="changeShowDialog"
+                    type="{{typeDialog}}"
+                    mask="{{true}}"
+                    title="{{titleDialog}}"
+                    content="{{contentDialog}}"
+                    icon-type="{{iconTypeDialog}}"
+                    icon-style="{{iconStyleDialog}}"
+                    show-close="{{showCloseDialog}}"
+                    c-bind:confirm="confirmEvent"
+                    c-bind:cancel="cancelEvent"
+          ></c-dialog>
+          <button class="btn" c-bind:onclick="showConfirm" text="confirm dialog"></button>
+        </view>
+-->
+            <view class="scroll-content">
+                <view class="scroll-content-title">
+                    <text class="scroll-content-title-con">最热</text>
+                </view>
+                <view class="scroll-content-des">
+                    <text class="scroll-content-des-con">最火帅哥美女</text>
+                </view>
             </view>
 
             <view class="scroll-content-list">
-
               <view
                 class="scroll-content-list-item"
                 c-for="{{list}}"
                 c-for-index="i"
                 c-for-item="item"
-                data-idx="{{i}}"
-              >
+                data-idx="{{i}}">
                   <view class="scroll-content-list-item-content">
                       <image src="{{item.imgUrl}}" class="scroll-content-list-item-content-img"/>
+                      <view class="scroll-content-list-item-content-des">
+                          <text class="des">{{item.des}}</text>
+                      </view>
                   </view>
                   <view>
                       <text class="scroll-content-list-item-name">{{item.name}}</text>
                       <text class="scroll-content-list-item-money">{{item.money}}票</text>
                   </view>
-
                   <view id="{{item.id}}" c-bind:tap="post"><text class="scroll-content-list-item-tag"> 投   票</text></view>
               </view>
 
             </view>
 
-          </view>
-        </view>
         <view class="no-more-text" c-if="{{ page >= sumPage }}">
           <text>没有更多了</text>
         </view>
-          <view c-else class="loading-text" style="{{ loadingTextStyle }}">
+        <view c-else class="loading-text" style="{{ loadingTextStyle }}">
             <text>到底了...</text>
-          </view>
+        </view>
       </scroller>
     </view>
 </template>
@@ -382,6 +365,11 @@
     font-size: 24cpx;
     font-size: 32cpx;
     color: #fc9153;
+  }
+  .dialog-page {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
   }
 </style>
 <script cml-type="json">

@@ -1,39 +1,52 @@
 <template>
   <page title="Home">
-  <view class="home">
-    <cswiper></cswiper>
-<!--    <service></service>-->
-<!--    <classlist></classlist>-->
-<!--    <special></special>-->
+    <view class="home">
+      <cswiper></cswiper>
+  <!--    <service></service>-->
+  <!--    <classlist></classlist>-->
+  <!--    <special></special>-->
 
-    <c-tab
-        tabs="{{tabs}}"
-        c-bind:tabclick="handleTabTap"
-        active-label="{{activeLabel}}"
-        inline="{{false}}"
-    >
-    </c-tab>
-    <c-tab-pane tabs="{{tabs}}" active-label="{{activeLabel}}">
-      <c-tab-pane-item>
-        <view class="one">
-          <list-com-latest></list-com-latest>
-        </view>
-      </c-tab-pane-item>
-      <c-tab-pane-item>
-        <view class="two">
-          <list-com-popular></list-com-popular>
-        </view>
-      </c-tab-pane-item>
-    </c-tab-pane>
+      <c-tab
+          tabs="{{tabs}}"
+          c-bind:tabclick="handleTabTap"
+          active-label="{{activeLabel}}"
+          inline="{{false}}"
+      >
+      </c-tab>
+      <c-tab-pane tabs="{{tabs}}" active-label="{{activeLabel}}">
+        <c-tab-pane-item>
+          <view class="one">
+            <list-com-latest></list-com-latest>
+          </view>
+        </c-tab-pane-item>
+        <c-tab-pane-item>
+          <view class="two">
+            <list-com-popular></list-com-popular>
+          </view>
+        </c-tab-pane-item>
+      </c-tab-pane>
 
 
-  </view>
+
+    </view>
   </page>
 </template>
 
 <script>
   class Home {
     data = {
+      showDialog: false,
+      showCloseDialog: false,
+      headerTitle: "c-dialog",
+      headerDesc: "c-dialog",
+      typeDialog: "alert",
+      iconTypeDialog: "warn",
+      iconStyleDialog: {
+        width: "10cpx",
+        height: "10cpx"
+      },
+      titleDialog: "我是标题",
+      contentDialog: "我是内容",
       tabs:[{
         label:'最新',
         // prefixStyle:"width:50cpx;height:20cpx;background-color:red"
@@ -50,11 +63,53 @@
       },
       handleTabTapAlone(e){
         this.activeLabelAlone = e.detail.label;
+      },
+      changeShowDialog(e) {
+        this.showDialog = e.detail.value;
+      },
+      showConfirm() {
+        this.typeDialog = "confirm";
+        this.titleDialog = "我是标题";
+        this.contentDialog = 'content';
+        this.iconTypeDialog = "success";
+        this.showCloseDialog = false;
+        this.showDialog = true;
+      },
+      confirmEvent() {
+        console.log('confirm');
+      },
+      cancelEvent() {
+        console.log('cancel');
       }
     }
   }
   export default new Home();
 </script>
+
+<style scoped>
+  .btn {
+    margin-top: 20cpx;
+    align-self: center;
+  }
+  .custom-header {
+    font-size: 32cpx;
+    padding: 30cpx 20cpx;
+  }
+  .custom-content {
+    padding: 60cpx;
+    font-size: 28cpx;
+    text-align: center;
+    color: #666;
+  }
+  .custom-footer {
+    text-align: center;
+    border-top: 0.5cpx solid #f0f0f0;
+    padding: 30cpx 0;
+    font-size: 24cpx;
+    font-size: 32cpx;
+    color: #fc9153;
+  }
+</style>
 
 <script cml-type="json">
   {
@@ -68,7 +123,8 @@
         "classlist": "./classlist",
         "special": "./special",
         "list-com-latest": "./list-com-latest",
-        "list-com-popular": "./list-com-popular"
+        "list-com-popular": "./list-com-popular",
+        "c-dialog": "cml-tt-ui/components/c-dialog/c-dialog"
       }
     }
   }

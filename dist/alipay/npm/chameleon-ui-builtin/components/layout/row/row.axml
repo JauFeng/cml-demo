@@ -1,3 +1,0 @@
-<view class="{{ rowClass }}  cml-base cml-view cml-50f4cf22" style="{{rowStyle}}">
-  <slot class=" cml-base cml-slot cml-50f4cf22"></slot>
-</view>

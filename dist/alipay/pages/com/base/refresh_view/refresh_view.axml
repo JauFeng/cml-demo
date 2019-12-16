@@ -1,9 +1,0 @@
-<view class=" cml-base cml-view cml-2aa627e2"><cml-buildin-page title="refresh-view" class=" cml-base cml-page cml-2aa627e2">
-  <refresh-view enablePullUpLoad="{{true}}" pullingDown="{{pullingDown}}" pullingUp="{{pullingUp}}" onOnPullDownRefresh="_cmlEventProxy" data-eventonpulldownrefresh="{{['pullDownRefreshHandle']}}" onOnPullUpLoad="_cmlEventProxy" data-eventonpullupload="{{['pullUploadHandle']}}" class=" cml-base cml-refresh-view cml-2aa627e2">
-      <view class="content  cml-base cml-view cml-2aa627e2">
-        <view class=" cml-base cml-view cml-2aa627e2"><c-header title="refresh-view" class=" cml-base cml-c-header cml-2aa627e2"></c-header></view>
-        <text a:for="{{texts}}" class="text-item  cml-base cml-text cml-2aa627e2">{{item}}</text>
-      </view>
-      <text class="loading-text  cml-base cml-text cml-2aa627e2">{{loadingText}}</text>
-  </refresh-view>
-  </cml-buildin-page></view>

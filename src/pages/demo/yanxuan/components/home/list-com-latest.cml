@@ -220,6 +220,9 @@
               >
                 <view class="scroll-content-list-item-content">
                   <image src="{{item.imgUrl}}" class="scroll-content-list-item-content-img"/>
+                    <view class="scroll-content-list-item-content-des">
+                        <text class="des">{{item.des}}</text>
+                    </view>
                 </view>
                 <view>
                   <text class="scroll-content-list-item-name">{{item.name}}</text>

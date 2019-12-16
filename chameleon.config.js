@@ -1,6 +1,6 @@
 
 //设置静态资源的线上路径
-const publicPath = 'https://beatles-chameleon.github.io/cml-demo/dist';
+const publicPath = 'http://47.96.82.143/cml-demo/';
 //设置api请求前缀
 const apiPrefix = 'https://cmljs.org';
 const path = require('path');

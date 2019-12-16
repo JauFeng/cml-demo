@@ -9,6 +9,12 @@
       "mock": "index.php"
     },
     {
+      "url": "/cml/demo/yanxuan/login",
+      "path": "/pages/demo/yanxuan/pages/login/login",
+      "name": "login",
+      "mock": "index.php"
+    },
+    {
       "name": "com",
       "url": "/pages/com/com",
       "path": "/pages/com/com",

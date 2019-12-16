@@ -1,0 +1,92 @@
+<template>
+    <page title="Login">
+
+        <row margin="{{100}}">
+            <view>登  录</view>
+        </row>
+        <view>
+            <input class="input" type="number" placeholder='请输入海尔工号' focus="{{isfocus}}" c-bind:input="inputEvent"/>
+        </view>
+        <view></view>
+        <view>
+          <button type="blue" text="登录" c-bind:onclick="login"></button>
+        </view>
+
+    </page>
+</template>
+
+<script>
+  import cml from 'chameleon-api'
+
+  const API_URL = 'http://47.96.82.143:9000';
+
+  class Login {
+        data = {
+            isfocus: false,
+            id: -1,
+        }
+        computed = {
+        }
+        methods = {
+          inputEvent(e) {
+            this.id = e.detail.value;
+          },
+          login() {
+              console.log(this.id);
+              toLogin(this.id);
+          }
+        }
+    }
+
+  function toLogin(id) {
+    cml.post({
+      url: API_URL+ '/demo/api/login',
+      data: {
+        id: id
+      },
+      contentType: 'json',
+      setting: {credentials: 'omit'}
+    }).then(res => {
+      if (0 === res.code) {
+        setStorage(res.data);
+        toHome();
+      } else {
+        cml.showToast({
+          message: res.errMsg,
+          duration: 2000
+        })
+      }
+    }, err => {
+      cml.showToast({
+        message: JSON.stringify(err),
+        duration: 2000
+      })
+    })
+  }
+
+  function setStorage(data) {
+    cml.setStorage('data', data).then(()=>{
+    },function(err){
+    });
+  }
+
+  function toHome() {
+    cml.navigateTo({
+      "path": "/pages/demo/yanxuan/pages/index/index"
+    });
+  }
+
+  export default new Login();
+</script>
+<style scoped>
+    .input {
+        width: 100%;
+        height: 40 cpx;
+    }
+</style>
+<script cml-type="json">
+    {
+        "base": {
+        }
+    }
+</script>
