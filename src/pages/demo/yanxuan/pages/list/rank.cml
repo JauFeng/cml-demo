@@ -32,13 +32,11 @@
         height: "60cpx"
       },
       titleDialog: "我是标题",
-      contentDialog: "我是内容",
-      currentId: -1
+      contentDialog: "我是内容"
     }
     methods = {
       change(e) {
         // toDetail();
-        vote();
       },
       onBottom(e) {
         if (this.bottomRefreshing || this.page >= this.sumPage) return;
@@ -110,8 +108,50 @@
       },
       post(e) {
         const id = e.currentTarget.id;
-        vote(id);
+        this.vote(id);
+      },
+      vote(id) {
+        cml.getStorage('data').then((value)=>{
+          if (value) {
+            console.log('data: ' + value.id);
+            this.votePost(id, value.id);
+          } else {
+            cml.navigateTo({
+              "path": "/pages/demo/yanxuan/pages/login/login"
+            });
+          }
+        },function(err){
+        });
+      },
+      votePost(id, voter) {
+        cml.post({
+          url: API_URL+ '/demo/api/vote',
+          data: {
+            id: id,
+            voter: voter
+          },
+          contentType: 'json',
+          setting: {credentials: 'omit'}
+        }).then(res => {
+          if (0 === res.code) {
+            cml.showToast({
+              message: '投票成功',
+              duration: 2000
+            });
+          } else {
+            cml.showToast({
+              message: res.errMsg,
+              duration: 2000
+            })
+          }
+        }, err => {
+          cml.showToast({
+            message: JSON.stringify(err),
+            duration: 2000
+          })
+        })
       }
+
     }
 
     created(res) {
@@ -127,51 +167,6 @@
         a: 1,
         b: 'test'
       }
-    });
-  }
-
-  function vote(id) {
-    getCurrentUser();
-
-    cml.post({
-      url: API_URL+ '/demo/api/vote',
-      data: {
-        id: id,
-        voter: curretId
-      },
-      contentType: 'json',
-      setting: {credentials: 'omit'}
-    }).then(res => {
-      if (0 === res.code) {
-        cml.showToast({
-          message: '投票成功',
-          duration: 2000
-        })
-      } else {
-        cml.showToast({
-          message: '投票失败',
-          duration: 2000
-        })
-      }
-    }, err => {
-      cml.showToast({
-        message: JSON.stringify(err),
-        duration: 2000
-      })
-    })
-  }
-
-  function getCurrentUser() {
-    cml.getStorage('data').then((value)=>{
-      console.log('data: ' + value.id);
-      if (value) {
-        this.curretId = value.id;
-      } else {
-        cml.navigateTo({
-          "path": "/pages/demo/yanxuan/pages/login/login"
-        });
-      }
-    },function(err){
     });
   }
 
@@ -221,7 +216,7 @@
 <!--          <button class="btn" c-bind:onclick="showConfirm" text="confirm dialog"></button>-->
 
 
-<!--          <button class="btn" c-bind:onclick="post" text="post"></button>-->
+<!--          <button class="btn" c-bind:onclick="reload" text="post"></button>-->
 
           <view class="scroll-content">
 

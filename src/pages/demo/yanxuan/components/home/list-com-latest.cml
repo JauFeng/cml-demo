@@ -107,10 +107,51 @@
       cancelEvent() {
         console.log('cancel');
       },
-      post(e) {
-        const id = e.currentTarget.id;
-        vote(id);
-      }
+        post(e) {
+            const id = e.currentTarget.id;
+            this.vote(id);
+        },
+        vote(id) {
+            cml.getStorage('data').then((value)=>{
+                if (value) {
+                    console.log('data: ' + value.id);
+                    this.votePost(id, value.id);
+                } else {
+                    cml.navigateTo({
+                        "path": "/pages/demo/yanxuan/pages/login/login"
+                    });
+                }
+            },function(err){
+            });
+        },
+        votePost(id, voter) {
+            cml.post({
+                url: API_URL+ '/demo/api/vote',
+                data: {
+                    id: id,
+                    voter: voter
+                },
+                contentType: 'json',
+                setting: {credentials: 'omit'}
+            }).then(res => {
+                if (0 === res.code) {
+                    cml.showToast({
+                        message: '投票成功',
+                        duration: 2000
+                    });
+                } else {
+                    cml.showToast({
+                        message: res.errMsg,
+                        duration: 2000
+                    })
+                }
+            }, err => {
+                cml.showToast({
+                    message: JSON.stringify(err),
+                    duration: 2000
+                })
+            })
+        }
     }
 
     created(res) {
@@ -127,35 +168,6 @@
         b: 'test'
       }
     });
-  }
-
-  function vote(id) {
-    cml.post({
-      url: API_URL+ '/demo/api/vote',
-      data: {
-        id: id,
-        voter: 1234567890
-      },
-      contentType: 'json',
-      setting: {credentials: 'omit'}
-    }).then(res => {
-      if (0 === res.code) {
-        cml.showToast({
-          message: '投票成功',
-          duration: 2000
-        })
-      } else {
-        cml.showToast({
-          message: '投票失败',
-          duration: 2000
-        })
-      }
-    }, err => {
-      cml.showToast({
-        message: JSON.stringify(err),
-        duration: 2000
-      })
-    })
   }
 
   export default new Refresh();

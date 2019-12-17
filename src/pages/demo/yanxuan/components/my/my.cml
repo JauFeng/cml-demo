@@ -50,7 +50,7 @@
         console.log('data: ' + value.avator);
         if (value) {
           this.name = value.userName;
-          this.headerImg = value.avator;
+          this.headerImg = value.avatar;
           this.mobile = value.mobile;
         } else {
           this.showLogin = true;
