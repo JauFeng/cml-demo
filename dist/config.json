@@ -6,6 +6,11 @@
     },
     {
         "web": {
+            "url": "https://cmljs.org#/cml/demo/yanxuan/login"
+        }
+    },
+    {
+        "web": {
             "url": "https://cmljs.org#/pages/com/com"
         }
     },

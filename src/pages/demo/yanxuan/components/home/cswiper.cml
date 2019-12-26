@@ -2,6 +2,7 @@
   <view class="carousel" c-bind:touchmove="forbinding">
     <carousel class="carousel-container" indicator-dots="{{true}}" current="{{1}}" circular="{{true}}"
               autoplay="{{true}}">
+      <!--
       <carousel-item
         class="carousel-carousel-item"
         c-for="{{bannerImgList}}"
@@ -12,7 +13,13 @@
       >
         <image src="{{item.imgUrl}}" class="Img"/>
       </carousel-item>
-
+      -->
+      <carousel-item class="carousel-carousel-item">
+        <image src="{{imageSrcI}}" class="Img"/>
+      </carousel-item>
+      <carousel-item class="carousel-carousel-item">
+        <image src="{{imageSrcII}}" class="Img"/>
+      </carousel-item>
     </carousel>
   </view>
 </template>
@@ -22,7 +29,9 @@
   import homeData from '../../assets/getHomeImgList.json';
   class List {
     data = {
-      bannerImgList: []
+      bannerImgList: [],
+      imageSrcI: require('../../../../../assets/images/yanxuan/banner-01.jpg'),
+      imageSrcII: require('../../../../../assets/images/yanxuan/banner-02.jpg')
     }
     methods = {
       forbinding(e){

@@ -24,9 +24,12 @@
             <list-com-popular></list-com-popular>
           </view>
         </c-tab-pane-item>
+        <c-tab-pane-item>
+          <view class="three">
+            <list-com-program></list-com-program>
+          </view>
+        </c-tab-pane-item>
       </c-tab-pane>
-
-
 
     </view>
   </page>
@@ -53,8 +56,11 @@
       },{
         label:"最热",
         // suffixStyle:"width:50cpx;height:20cpx;background-color:red"
+      },{
+        label:"节目",
+        // suffixStyle:"width:50cpx;height:20cpx;background-color:red"
       }],
-      activeLabel:'最热',
+      activeLabel:'最新'
     }
     methods = {
       handleTabTap(e){
@@ -124,6 +130,7 @@
         "special": "./special",
         "list-com-latest": "./list-com-latest",
         "list-com-popular": "./list-com-popular",
+        "list-com-program": "./list-com-program",
         "c-dialog": "cml-tt-ui/components/c-dialog/c-dialog"
       }
     }

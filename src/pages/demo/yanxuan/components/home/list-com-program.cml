@@ -1,0 +1,414 @@
+<script>
+  import cml from 'chameleon-api'
+  // import cml from 'cml-tt-api'
+  import listData from '../../assets/listImages.json';
+
+  const API_URL = 'http://47.96.82.143:9000';
+
+  class Refresh {
+    data = {
+      topRefreshing: false,
+      bottomRefreshing: false,
+      bottomOffset: 20,
+      scrollDirection: 'vertical',
+      loadingTextStyle: '',
+      page: 0,
+      sumPage: 5,
+      list: [],
+      topImg: '',
+      voteToastShow: false,
+      voteToastMask: false,
+      voteToastMessage:'',
+      voteToastType: '',
+      voteToastDuration: 1000,
+      showDialog: false,
+      showCloseDialog: false,
+      headerTitle: "c-dialog",
+      headerDesc: "c-dialog",
+      typeDialog: "alert",
+      iconTypeDialog: "warn",
+      iconStyleDialog: {
+        width: "60cpx",
+        height: "60cpx"
+      },
+      titleDialog: "我是标题",
+      contentDialog: "我是内容",
+      imageSrc: require('../../../../../assets/images/yanxuan/banner-02.jpg')
+
+    }
+    methods = {
+      change(e) {
+      },
+      onBottom(e) {
+        if (this.bottomRefreshing || this.page >= this.sumPage) return;
+        setTimeout(() => {
+          this._getData();
+        }, 200)
+      },
+      onScroll() {
+
+      },
+      _getData() {
+        cml.get({
+          url: API_URL+ '/demo/api/programs',
+          // data: {
+          //   user: 1,
+          //   voter: 1234567890
+          // }
+          setting: {credentials: 'omit'}
+        }).then(res => {
+            // cml.showToast({
+            //   message: res.retMsg,
+            //   duration: 2000
+            // });
+            const {topImgUrl, list} = res.data;
+            this.list = [...this.list, ...list];
+            this.topImg = topImgUrl;
+            this.page = this.page + 1;
+
+        }, err => {
+          cml.showToast({
+            message: JSON.stringify(err),
+            duration: 2000
+          })
+        });
+      },
+      toastChangeShow(e) {
+        this.voteToastShow = e.detail.value;
+      },
+      showSuccess() {
+        this.voteToastMessage = "success";
+        this.voteToastType = "success";
+        this.voteToastMask = true;
+        this.voteToastDuration = 1000;
+        this.voteToastShow = true;
+      },
+      showWarn() {
+        this.voteToastMessage = "warn";
+        this.voteToastType = "warn";
+        this.voteToastMask = true;
+        this.voteToastDuration = 1000;
+        this.voteToastShow = true;
+      },
+      changeShowDialog(e) {
+        this.showDialog = e.detail.value;
+      },
+      showConfirm() {
+        this.typeDialog = "confirm";
+        this.titleDialog = "我是标题";
+        this.contentDialog = 'content';
+        this.iconTypeDialog = "success";
+        this.showCloseDialog = false;
+        this.showDialog = true;
+      },
+      confirmEvent() {
+        console.log('confirm');
+      },
+      cancelEvent() {
+        console.log('cancel');
+      },
+        post(e) {
+            const id = e.currentTarget.id;
+            this.vote(id);
+        },
+        vote(id) {
+            cml.getStorage('data').then((value)=>{
+                if (value) {
+                    console.log('data: ' + value.id);
+                    this.votePost(id, value.id);
+                } else {
+                    cml.navigateTo({
+                        "path": "/pages/demo/yanxuan/pages/login/login"
+                    });
+                }
+            },function(err){
+            });
+        },
+        votePost(id, voter) {
+            cml.post({
+                url: API_URL+ '/demo/api/vote/program',
+                data: {
+                    id: id,
+                    voter: voter
+                },
+                contentType: 'json',
+                setting: {credentials: 'omit'}
+            }).then(res => {
+                if (0 === res.code) {
+                    cml.showToast({
+                        message: '投票成功',
+                        duration: 2000
+                    });
+                } else {
+                    cml.showToast({
+                        message: res.errMsg,
+                        duration: 2000
+                    })
+                }
+            }, err => {
+                cml.showToast({
+                    message: JSON.stringify(err),
+                    duration: 2000
+                })
+            })
+        }
+    }
+
+    created(res) {
+        this.loadingTextStyle = 'color:#666;font-size:36cpx;margin:30cpx auto;';
+        this._getData();
+    }
+  }
+
+  function toDetail() {
+    cml.navigateTo({
+      "path": "/pages/demo/yanxuan/pages/detail/detail",
+      query: {
+        a: 1,
+        b: 'test'
+      }
+    });
+  }
+
+  export default new Refresh();
+</script>
+<template>
+    <view class="container">
+      <scroller
+        scroll-direction="{{scrollDirection}}"
+        bottom-offset="{{bottomOffset}}"
+<!--        c-bind:scrolltobottom="onBottom"-->
+        c-bind:customscroll="onScroll"
+        height="{{-1}}"
+      >
+        <view>
+<!--          <c-toast  show="{{voteToastShow}}"-->
+<!--                    c-bind:show="toastChangeShow"-->
+<!--                    message="{{voteToastMessage}}"-->
+<!--                    mask="{{voteToastMask}}"-->
+<!--                    type="{{voteToastType}}"-->
+<!--                    duration="{{1000}}"-->
+<!--          ></c-toast>-->
+
+<!--          <button class="btn" c-bind:onclick="showSuccess" text="success toast"></button>-->
+
+<!--          <button class="btn" c-bind:onclick="showWarn" text="warn toast"></button>-->
+
+
+<!--          <c-dialog show="{{showDialog}}"-->
+<!--                    c-bind:show="changeShowDialog"-->
+<!--                    type="{{typeDialog}}"-->
+<!--                    mask="{{true}}"-->
+<!--                    title="{{titleDialog}}"-->
+<!--                    content="{{contentDialog}}"-->
+<!--                    icon-type="{{iconTypeDialog}}"-->
+<!--                    icon-style="{{iconStyleDialog}}"-->
+<!--                    show-close="{{showCloseDialog}}"-->
+<!--                    c-bind:confirm="confirmEvent"-->
+<!--                    c-bind:cancel="cancelEvent"-->
+<!--          ></c-dialog>-->
+
+<!--          <button class="btn" c-bind:onclick="showConfirm" text="confirm dialog"></button>-->
+
+
+<!--          <button class="btn" c-bind:onclick="post" text="post"></button>-->
+
+          <view class="scroll-content">
+            <view class="scroll-content-title">
+              <text class="scroll-content-title-con">节目</text>
+            </view>
+            <view class="scroll-content-des">
+              <text class="scroll-content-des-con">精彩表演 值得期待</text>
+            </view>
+
+            <view class="scroll-content-list">
+
+                <view
+                        class="scroll-content-list-item"
+                        c-for="{{list}}"
+                        c-for-index="i"
+                        c-for-item="item"
+                        data-idx="{{i}}"
+                >
+                    <view class="scroll-content-list-item-content">
+                        <image src="{{imageSrc}}" class="scroll-content-list-item-content-img"/>
+                        <view class="scroll-content-list-item-content-des">
+                            <text class="des">{{item.description}}</text>
+                        </view>
+                    </view>
+                    <view>
+                        <text class="scroll-content-list-item-name">{{item.name}}</text>
+                        <text class="scroll-content-list-item-money">{{item.count}}票</text>
+                    </view>
+
+                    <view id="{{item.id}}" c-bind:tap="post"><text class="scroll-content-list-item-tag"> 投   票</text></view>
+                </view>
+
+            </view>
+
+          </view>
+        </view>
+        <view class="no-more-text" c-if="{{ page >= sumPage }}">
+            <text>没有更多了</text>
+        </view>
+        <view c-else class="loading-text" style="{{ loadingTextStyle }}">
+            <text>到底了...</text>
+        </view>
+      </scroller>
+    </view>
+</template>
+<style scoped>
+  .container {
+    flex: 1;
+  }
+
+  .bannerImg {
+    width: 750cpx;
+    height: 390cpx;
+    background: #f4f4f4;
+  }
+
+  .topImg {
+    width: 750cpx;
+    height: 370cpx;
+  }
+
+  .scroll-content-title, .scroll-content-des {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .scroll-content-title-con {
+    padding-top: 30cpx;
+    font-size: 32cpx;
+    color: #333;
+  }
+
+  .scroll-content-des-con {
+    font-size: 24cpx;
+    color: #999;
+  }
+
+  .scroll-content-list {
+    width: 750cpx;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .scroll-content-list-item {
+    width: 345cpx;
+    margin-left: 20cpx;
+    padding-top: 30cpx;
+  }
+
+  .scroll-content-list-item-content {
+    width: 345cpx;
+    position: relative;
+  }
+
+  .scroll-content-list-item-content-img {
+    width: 345cpx;
+    height: 345cpx;
+  }
+
+  .scroll-content-list-item-content-des {
+    width: 345cpx;
+    height: 40cpx;
+    line-height: 40cpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    padding: 0 20cpx;
+    background: #F1ECE2;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .des {
+    color: #9F8A60;
+    font-size: 24cpx;
+  }
+
+  .scroll-content-list-item-name {
+    white-space: nowrap;
+    color: #333;
+    font-size: 30cpx;
+  }
+
+  .scroll-content-list-item-money {
+    color: #b4282d;
+    font-size: 34cpx;
+  }
+
+  .scroll-content-list-item-tag {
+    width: 110cpx;
+    padding: 0 10cpx;
+    font-size: 20cpx;
+    color: #B4282D;
+    background: rgba(255, 255, 255, .9);
+    border: 1px solid #B4282D;
+    border-radius: 4cpx;
+  }
+
+  .no-more-text {
+    color: #999;
+    font-size: 36cpx;
+    text-align: center;
+    margin: 50cpx 0;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .loading-text {
+    color: #999;
+    font-size: 36cpx;
+    text-align: center;
+    margin: 50cpx 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .custom-header {
+    font-size: 32cpx;
+    padding: 30cpx 20cpx;
+  }
+  .custom-content {
+    padding: 60cpx;
+    font-size: 28cpx;
+    text-align: center;
+    color: #666;
+  }
+  .custom-footer {
+    text-align: center;
+    border-top: 0.5cpx solid #f0f0f0;
+    padding: 30cpx 0;
+    font-size: 24cpx;
+    font-size: 32cpx;
+    color: #fc9153;
+  }
+</style>
+<script cml-type="json">
+  {
+    "base": {
+      "usingComponents":{
+        "c-refresh": "cml-tt-ui/components/c-refresh/c-refresh",
+              "c-toast": "cml-ui/components/c-toast/c-toast",
+              "c-dialog": "cml-tt-ui/components/c-dialog/c-dialog"
+      },
+      "navigationBarTitleText": "列表",
+      "backgroundTextStyle": "dark",
+      "backgroundColor": "#E2E2E2"
+    }
+  }
+</script>
