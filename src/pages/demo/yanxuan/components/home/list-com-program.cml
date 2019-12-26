@@ -11,6 +11,7 @@
       bottomRefreshing: false,
       bottomOffset: 20,
       scrollDirection: 'vertical',
+      scrollBounce: true,
       loadingTextStyle: '',
       page: 0,
       sumPage: 5,
@@ -45,8 +46,11 @@
           this._getData();
         }, 200)
       },
-      onScroll() {
-
+      onScroll(e) {
+          if (0 === e.detail.scrollTop) {
+              console.log('fuck');
+              this.$router.go(0);
+          }
       },
       _getData() {
         cml.get({
@@ -177,8 +181,9 @@
       <scroller
         scroll-direction="{{scrollDirection}}"
         bottom-offset="{{bottomOffset}}"
+        bounce="{{scrollBounce}}"
 <!--        c-bind:scrolltobottom="onBottom"-->
-        c-bind:customscroll="onScroll"
+        c-bind:onscroll="onScroll"
         height="{{-1}}"
       >
         <view>

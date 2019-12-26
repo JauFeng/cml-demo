@@ -31,7 +31,7 @@
     data = {
       bannerImgList: [],
       imageSrcI: require('../../../../../assets/images/yanxuan/banner-01.jpg'),
-      imageSrcII: require('../../../../../assets/images/yanxuan/banner-02.jpg')
+      imageSrcII: require('../../../../../assets/images/yanxuan/banner-03.jpg')
     }
     methods = {
       forbinding(e){
