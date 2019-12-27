@@ -58,8 +58,8 @@
             "selectedIconStyle":"width:45cpx;height:45cpx;"
           },
           // {
-          //   compName: 'shop',
-          //   text: '购物车',
+          //   compName: 'refresh',
+          //   text: '刷新',
           //   icon: chameleonIcon,
           //   "iconStyle":"width:40cpx;height:40cpx;",
           //   "selectedIconStyle":"width:45cpx;height:45cpx;"
@@ -148,6 +148,7 @@
         "shop": "../../components/shop/shop",
         "my": "../../components/my/my",
         "topic": "../list/rank",
+        "refresh": "../../../../com/spread/c-refresh/c-refresh",
         "c-tabbar": "cml-tt-ui/components/c-tabbar/c-tabbar"
       },
       "navigationBarTitleText": "首页",

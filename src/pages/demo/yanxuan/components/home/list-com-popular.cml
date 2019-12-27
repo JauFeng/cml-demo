@@ -45,8 +45,10 @@
           this._getData();
         }, 200)
       },
-      onScroll() {
-
+      onScroll(e) {
+          if (0 === e.detail.scrollTop) {
+              this.$router.go(0);
+          }
       },
       _getData() {
         cml.get({

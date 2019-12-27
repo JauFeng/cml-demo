@@ -44,8 +44,17 @@
           this._getData();
         }, 200)
       },
-      onScroll() {
-
+      onScroll(e) {
+        if (0 === e.detail.scrollTop) {
+          this.$router.go(0);
+        }
+      },
+      onrefreshUp (e) {
+        this.topRefreshing = e.detail.value;
+        setTimeout(() => {
+          this._getData();
+          this.topRefreshing = false
+        }, 2000)
       },
       _getData() {
         cml.get({
@@ -175,13 +184,14 @@
 <template>
   <page title="Rank">
     <view class="container">
+<!--      <c-loading loading="{{loadingFlag}}"></c-loading>-->
       <scroller
         scroll-direction="{{scrollDirection}}"
         bottom-offset="{{bottomOffset}}"
-<!--        c-bind:scrolltobottom="onBottom"-->
         c-bind:customscroll="onScroll"
-        height="{{-1}}"
-      >
+        height="{{-1}}">
+      <c-refresh display="{{ topRefreshing }}" c-bind:refresh="onrefreshUp"></c-refresh>
+
         <view>
           <view class="bannerImg">
             <image src="{{topImg}}" class="topImg"/>
@@ -227,8 +237,7 @@
                 c-for="{{list}}"
                 c-for-index="i"
                 c-for-item="item"
-                data-idx="{{i}}"
-              >
+                data-idx="{{i}}">
                 <view class="scroll-content-list-item-content">
                   <image src="{{item.imgUrl}}" class="scroll-content-list-item-content-img"/>
                   <view class="scroll-content-list-item-content-des">
@@ -404,8 +413,10 @@
       "usingComponents":{
         "c-refresh": "cml-tt-ui/components/c-refresh/c-refresh",
               "c-toast": "cml-ui/components/c-toast/c-toast",
-              "c-dialog": "cml-tt-ui/components/c-dialog/c-dialog"
-      },
+              "c-dialog": "cml-tt-ui/components/c-dialog/c-dialog",
+              "c-loading": "cml-ui/components/c-loading/c-loading",
+              "c-refresh": "cml-tt-ui/components/c-refresh/c-refresh"
+    },
       "navigationBarTitleText": "列表",
       "backgroundTextStyle": "dark",
       "backgroundColor": "#E2E2E2"

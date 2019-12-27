@@ -48,7 +48,6 @@
       },
       onScroll(e) {
           if (0 === e.detail.scrollTop) {
-              console.log('fuck');
               this.$router.go(0);
           }
       },
