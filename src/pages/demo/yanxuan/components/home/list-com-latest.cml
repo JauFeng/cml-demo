@@ -11,6 +11,7 @@
       bottomRefreshing: false,
       bottomOffset: 20,
       scrollDirection: 'vertical',
+      scrollBounce: true,
       loadingTextStyle: '',
       page: 0,
       sumPage: 5,
@@ -179,7 +180,7 @@
       <scroller
         scroll-direction="{{scrollDirection}}"
         bottom-offset="{{bottomOffset}}"
-<!--        c-bind:scrolltobottom="onBottom"-->
+        bounce="{{scrollBounce}}"
         c-bind:customscroll="onScroll"
         height="{{-1}}"
       >

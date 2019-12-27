@@ -181,7 +181,6 @@
         scroll-direction="{{scrollDirection}}"
         bottom-offset="{{bottomOffset}}"
         bounce="{{scrollBounce}}"
-<!--        c-bind:scrolltobottom="onBottom"-->
         c-bind:onscroll="onScroll"
         height="{{-1}}"
       >

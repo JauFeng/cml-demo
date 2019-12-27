@@ -11,6 +11,7 @@
       bottomRefreshing: false,
       bottomOffset: 20,
       scrollDirection: 'vertical',
+      scrollBounce: true,
       loadingTextStyle: '',
       page: 0,
       sumPage: 5,
@@ -48,13 +49,6 @@
         if (0 === e.detail.scrollTop) {
           this.$router.go(0);
         }
-      },
-      onrefreshUp (e) {
-        this.topRefreshing = e.detail.value;
-        setTimeout(() => {
-          this._getData();
-          this.topRefreshing = false
-        }, 2000)
       },
       _getData() {
         cml.get({
@@ -188,45 +182,13 @@
       <scroller
         scroll-direction="{{scrollDirection}}"
         bottom-offset="{{bottomOffset}}"
+        bounce="{{scrollBounce}}"
         c-bind:customscroll="onScroll"
         height="{{-1}}">
-      <c-refresh display="{{ topRefreshing }}" c-bind:refresh="onrefreshUp"></c-refresh>
-
         <view>
           <view class="bannerImg">
             <image src="{{topImg}}" class="topImg"/>
           </view>
-
-<!--          <c-toast  show="{{voteToastShow}}"-->
-<!--                    c-bind:show="toastChangeShow"-->
-<!--                    message="{{voteToastMessage}}"-->
-<!--                    mask="{{voteToastMask}}"-->
-<!--                    type="{{voteToastType}}"-->
-<!--                    duration="{{1000}}"-->
-<!--          ></c-toast>-->
-
-<!--          <button class="btn" c-bind:onclick="showSuccess" text="success toast"></button>-->
-
-<!--          <button class="btn" c-bind:onclick="showWarn" text="warn toast"></button>-->
-
-
-<!--          <c-dialog show="{{showDialog}}"-->
-<!--                    c-bind:show="changeShowDialog"-->
-<!--                    type="{{typeDialog}}"-->
-<!--                    mask="{{true}}"-->
-<!--                    title="{{titleDialog}}"-->
-<!--                    content="{{contentDialog}}"-->
-<!--                    icon-type="{{iconTypeDialog}}"-->
-<!--                    icon-style="{{iconStyleDialog}}"-->
-<!--                    show-close="{{showCloseDialog}}"-->
-<!--                    c-bind:confirm="confirmEvent"-->
-<!--                    c-bind:cancel="cancelEvent"-->
-<!--          ></c-dialog>-->
-
-<!--          <button class="btn" c-bind:onclick="showConfirm" text="confirm dialog"></button>-->
-
-
-<!--          <button class="btn" c-bind:onclick="reload" text="post"></button>-->
 
           <view class="scroll-content">
 
